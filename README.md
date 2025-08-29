@@ -1,6 +1,6 @@
 # Hospital Database Management System
 
-#### A comprehensive hospital management system built with Python, SQLite, and SQLAlchemy, June 27, 2025
+#### A comprehensive hospital management system built with Python, SQLite, and SQLAlchemy, August 29, 2025
 
 #### By **Kaynan Mwangi**
 
