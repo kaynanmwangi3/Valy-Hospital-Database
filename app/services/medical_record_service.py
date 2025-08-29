@@ -6,7 +6,7 @@ from datetime import date, timedelta
 class MedicalRecordService:
     @staticmethod
     def create_medical_record(db: Session, record_data: dict):
-        """Create a new medical record"""
+        #Create a new medical record
         # Validate input data
         admission_date = validate_date(record_data['admission_date']) if record_data.get('admission_date') else None
         discharge_date = validate_date(record_data['discharge_date']) if record_data.get('discharge_date') else None
@@ -37,22 +37,22 @@ class MedicalRecordService:
 
     @staticmethod
     def get_medical_record(db: Session, record_id: int):
-        """Get medical record by ID"""
+        #Get medical record by ID
         return db.query(MedicalRecord).filter(MedicalRecord.id == record_id).first()
 
     @staticmethod
     def get_all_medical_records(db: Session):
-        """Get all medical records"""
+        #Get all medical records
         return db.query(MedicalRecord).all()
 
     @staticmethod
     def get_patient_medical_records(db: Session, patient_id: int):
-        """Get all medical records for a specific patient"""
+        #Get all medical records for a specific patient
         return db.query(MedicalRecord).filter(MedicalRecord.patient_id == patient_id).all()
 
     @staticmethod
     def update_medical_record(db: Session, record_id: int, update_data: dict):
-        """Update medical record information"""
+        #Update medical record information
         record = db.query(MedicalRecord).filter(MedicalRecord.id == record_id).first()
         if not record:
             return None
@@ -83,7 +83,7 @@ class MedicalRecordService:
 
     @staticmethod
     def delete_medical_record(db: Session, record_id: int):
-        """Delete a medical record"""
+        #Delete a medical record
         record = db.query(MedicalRecord).filter(MedicalRecord.id == record_id).first()
         if record:
             db.delete(record)
