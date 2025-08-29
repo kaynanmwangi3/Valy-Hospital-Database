@@ -5,7 +5,7 @@ from app.validators import validate_name, validate_email, validate_phone, valida
 class StaffService:
     @staticmethod
     def create_staff(db: Session, staff_data: dict):
-        """Create a new staff member"""
+        #Create a new staff member
         # Validate input data
         first_name = validate_name(staff_data['first_name'])
         last_name = validate_name(staff_data['last_name'])
@@ -32,17 +32,17 @@ class StaffService:
 
     @staticmethod
     def get_staff(db: Session, staff_id: int):
-        """Get staff by ID"""
+        #Get staff by ID
         return db.query(Staff).filter(Staff.id == staff_id).first()
 
     @staticmethod
     def get_all_staff(db: Session):
-        """Get all staff members"""
+        #Get all staff members
         return db.query(Staff).all()
 
     @staticmethod
     def search_staff(db: Session, search_term: str):
-        """Search staff by name or role"""
+        #Search staff by name or role
         return db.query(Staff).filter(
             (Staff.first_name.ilike(f"%{search_term}%")) | 
             (Staff.last_name.ilike(f"%{search_term}%")) |
@@ -51,7 +51,7 @@ class StaffService:
 
     @staticmethod
     def update_staff(db: Session, staff_id: int, update_data: dict):
-        """Update staff information"""
+        #Update staff information
         staff = db.query(Staff).filter(Staff.id == staff_id).first()
         if not staff:
             return None
@@ -78,7 +78,7 @@ class StaffService:
 
     @staticmethod
     def delete_staff(db: Session, staff_id: int):
-        """Delete a staff member"""
+        #Delete a staff member
         staff = db.query(Staff).filter(Staff.id == staff_id).first()
         if staff:
             db.delete(staff)
