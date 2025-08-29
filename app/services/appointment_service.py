@@ -5,7 +5,7 @@ from app.validators import validate_datetime
 class AppointmentService:
     @staticmethod
     def create_appointment(db: Session, appointment_data: dict):
-        """Create a new appointment"""
+        #Create a new appointment
         # Validate input data
         appointment_date = validate_datetime(appointment_data['appointment_date'])
         
@@ -26,27 +26,27 @@ class AppointmentService:
 
     @staticmethod
     def get_appointment(db: Session, appointment_id: int):
-        """Get appointment by ID"""
+        #Get appointment by ID
         return db.query(Appointment).filter(Appointment.id == appointment_id).first()
 
     @staticmethod
     def get_all_appointments(db: Session):
-        """Get all appointments"""
+        #Get all appointments
         return db.query(Appointment).all()
 
     @staticmethod
     def get_patient_appointments(db: Session, patient_id: int):
-        """Get all appointments for a specific patient"""
+        #Get all appointments for a specific patient
         return db.query(Appointment).filter(Appointment.patient_id == patient_id).all()
 
     @staticmethod
     def get_staff_appointments(db: Session, staff_id: int):
-        """Get all appointments for a specific staff member"""
+        #Get all appointments for a specific staff member
         return db.query(Appointment).filter(Appointment.staff_id == staff_id).all()
 
     @staticmethod
     def update_appointment(db: Session, appointment_id: int, update_data: dict):
-        """Update appointment information"""
+        #Update appointment information
         appointment = db.query(Appointment).filter(Appointment.id == appointment_id).first()
         if not appointment:
             return None
@@ -69,7 +69,7 @@ class AppointmentService:
 
     @staticmethod
     def delete_appointment(db: Session, appointment_id: int):
-        """Delete an appointment"""
+        #Delete an appointment
         appointment = db.query(Appointment).filter(Appointment.id == appointment_id).first()
         if appointment:
             db.delete(appointment)
