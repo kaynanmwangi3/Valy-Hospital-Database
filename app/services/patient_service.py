@@ -6,7 +6,7 @@ from datetime import date
 class PatientService:
     @staticmethod
     def create_patient(db: Session, patient_data: dict):
-        """Create a new patient"""
+        #Create a new patient
         # Validate input data
         first_name = validate_name(patient_data['first_name'])
         last_name = validate_name(patient_data['last_name'])
@@ -34,17 +34,17 @@ class PatientService:
 
     @staticmethod
     def get_patient(db: Session, patient_id: int):
-        """Get patient by ID"""
+        #Get patient by ID
         return db.query(Patient).filter(Patient.id == patient_id).first()
 
     @staticmethod
     def get_all_patients(db: Session):
-        """Get all patients"""
+        #Get all patients
         return db.query(Patient).all()
 
     @staticmethod
     def search_patients(db: Session, search_term: str):
-        """Search patients by name"""
+        #Search patients by name
         return db.query(Patient).filter(
             (Patient.first_name.ilike(f"%{search_term}%")) | 
             (Patient.last_name.ilike(f"%{search_term}%"))
@@ -52,7 +52,7 @@ class PatientService:
 
     @staticmethod
     def update_patient(db: Session, patient_id: int, update_data: dict):
-        """Update patient information"""
+        #Update patient information
         patient = db.query(Patient).filter(Patient.id == patient_id).first()
         if not patient:
             return None
@@ -79,7 +79,7 @@ class PatientService:
 
     @staticmethod
     def delete_patient(db: Session, patient_id: int):
-        """Delete a patient"""
+        #Delete a patient
         patient = db.query(Patient).filter(Patient.id == patient_id).first()
         if patient:
             db.delete(patient)
