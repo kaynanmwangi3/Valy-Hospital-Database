@@ -94,7 +94,7 @@ This application was built using:
 If you encounter any issues or have questions about the Hospital Database Management System, please reach out:
 
 - **Email**: caeserkaynan@gmail.com
-- **GitHub**: kaynanmwangi
+- **GitHub**: kaynanmwangi3
 - **Project Repository**: https://github.com/kaynanmwangi/hospital-management-system
 - **Documentation**: Full documentation available in the `/docs` directory
 
