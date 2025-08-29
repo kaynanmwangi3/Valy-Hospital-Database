@@ -8,12 +8,11 @@ engine = create_engine('sqlite:///hospital.db', echo=False)
 # Create session factory
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+# create database tables
 def init_db():
-    """Initialize database tables"""
     Base.metadata.create_all(bind=engine)
 
 def get_db():
-    """Get database session"""
     db = SessionLocal()
     try:
         yield db
