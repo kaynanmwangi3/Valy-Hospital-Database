@@ -39,7 +39,7 @@ The Hospital Database Management System is a robust, command-line interface appl
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/kaynanmwangi/Valy-Hospital-Database.git
-   cd hospital-management-system
+   cd Valy-Hospital-Database
    ```
 
 2. **Install dependencies using pipenv**:
