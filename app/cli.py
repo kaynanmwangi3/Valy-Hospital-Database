@@ -84,14 +84,14 @@ class HospitalCLI:
         }
 
     def display_menu(self, options):
-        """Display a menu with the given options"""
-        print("\n" + "="*50)
+        #Display a menu with the given options
+        print("\n" + "="*50) # visual separator line
         for key, value in options.items():
             print(f"{key}. {value['name']}")
         print("="*50)
 
     def get_user_choice(self, options):
-        """Get and validate user choice from menu options"""
+        #Get and validate user choice from menu options
         while True:
             choice = input("\nEnter your choice: ").strip()
             if choice in options:
@@ -100,7 +100,7 @@ class HospitalCLI:
                 print("Invalid choice. Please try again.")
 
     def main_menu(self):
-        """Display the main menu"""
+        #Display the main menu
         while True:
             self.display_menu(self.menu_options)
             choice = self.get_user_choice(self.menu_options)
@@ -110,7 +110,7 @@ class HospitalCLI:
                 self.menu_options[choice]['function']()
 
     def patient_menu(self):
-        """Display the patient management menu"""
+        #Display the patient management menu
         while True:
             self.display_menu(self.patient_options)
             choice = self.get_user_choice(self.patient_options)
@@ -120,7 +120,7 @@ class HospitalCLI:
                 self.patient_options[choice]['function']()
 
     def staff_menu(self):
-        """Display the staff management menu"""
+        #Display the staff management menu
         while True:
             self.display_menu(self.staff_options)
             choice = self.get_user_choice(self.staff_options)
@@ -130,7 +130,7 @@ class HospitalCLI:
                 self.staff_options[choice]['function']()
 
     def appointment_menu(self):
-        """Display the appointment management menu"""
+        #Display the appointment management menu
         while True:
             self.display_menu(self.appointment_options)
             choice = self.get_user_choice(self.appointment_options)
@@ -140,7 +140,7 @@ class HospitalCLI:
                 self.appointment_options[choice]['function']()
 
     def medical_record_menu(self):
-        """Display the medical records management menu"""
+        #Display the medical records management menu
         while True:
             self.display_menu(self.medical_record_options)
             choice = self.get_user_choice(self.medical_record_options)
@@ -150,7 +150,7 @@ class HospitalCLI:
                 self.medical_record_options[choice]['function']()
 
     def billing_menu(self):
-        """Display the billing management menu"""
+        #Display the billing management menu
         while True:
             self.display_menu(self.billing_options)
             choice = self.get_user_choice(self.billing_options)
@@ -161,7 +161,7 @@ class HospitalCLI:
 
     # Patient management methods
     def register_patient(self):
-        """Register a new patient"""
+        #Register a new patient
         print("\n--- Register New Patient ---")
         
         # Using tuple for patient data collection
@@ -193,7 +193,7 @@ class HospitalCLI:
             print(f"\nError: {e}")
 
     def view_all_patients(self):
-        """View all patients"""
+        #View all patients
         patients = PatientService.get_all_patients(self.db)
         
         if not patients:
@@ -216,7 +216,7 @@ class HospitalCLI:
         print("\n" + tabulate(table_data, headers=headers, tablefmt="grid"))
 
     def search_patient(self):
-        """Search for patients by name"""
+        #Search for patients by name
         search_term = input("\nEnter patient name to search: ").strip()
         patients = PatientService.search_patients(self.db, search_term)
         
@@ -240,7 +240,7 @@ class HospitalCLI:
         print("\n" + tabulate(table_data, headers=headers, tablefmt="grid"))
 
     def update_patient(self):
-        """Update patient information"""
+        #Update patient information
         patient_id = input("\nEnter patient ID to update: ").strip()
         
         try:
@@ -283,7 +283,7 @@ class HospitalCLI:
             print("No changes made.")
 
     def delete_patient(self):
-        """Delete a patient"""
+        #Delete a patient
         patient_id = input("\nEnter patient ID to delete: ").strip()
         
         try:
@@ -309,7 +309,7 @@ class HospitalCLI:
 
     # Staff management methods
     def register_staff(self):
-        """Register a new staff member"""
+        #Register a new staff member
         print("\n--- Register New Staff ---")
         
         staff_data = {
@@ -329,7 +329,7 @@ class HospitalCLI:
             print(f"\nError: {e}")
 
     def view_all_staff(self):
-        """View all staff members"""
+        #View all staff members
         staff_members = StaffService.get_all_staff(self.db)
         
         if not staff_members:
@@ -352,7 +352,7 @@ class HospitalCLI:
         print("\n" + tabulate(table_data, headers=headers, tablefmt="grid"))
 
     def search_staff(self):
-        """Search for staff by name or role"""
+        #Search for staff by name or role
         search_term = input("\nEnter staff name or role to search: ").strip()
         staff_members = StaffService.search_staff(self.db, search_term)
         
@@ -376,7 +376,7 @@ class HospitalCLI:
         print("\n" + tabulate(table_data, headers=headers, tablefmt="grid"))
 
     def update_staff(self):
-        """Update staff information"""
+        #Update staff information
         staff_id = input("\nEnter staff ID to update: ").strip()
         
         try:
@@ -419,7 +419,7 @@ class HospitalCLI:
             print("No changes made.")
 
     def delete_staff(self):
-        """Delete a staff member"""
+        #Delete a staff member
         staff_id = input("\nEnter staff ID to delete: ").strip()
         
         try:
@@ -445,7 +445,7 @@ class HospitalCLI:
 
     # Appointment management methods
     def schedule_appointment(self):
-        """Schedule a new appointment"""
+        #Schedule a new appointment
         print("\n--- Schedule New Appointment ---")
         
         appointment_data = {
@@ -463,7 +463,7 @@ class HospitalCLI:
             print(f"\nError: {e}")
 
     def view_all_appointments(self):
-        """View all appointments"""
+        #View all appointments
         appointments = AppointmentService.get_all_appointments(self.db)
         
         if not appointments:
@@ -486,7 +486,7 @@ class HospitalCLI:
         print("\n" + tabulate(table_data, headers=headers, tablefmt="grid"))
 
     def view_patient_appointments(self):
-        """View appointments for a specific patient"""
+        #View appointments for a specific patient
         patient_id = input("\nEnter patient ID: ").strip()
         
         try:
@@ -517,7 +517,7 @@ class HospitalCLI:
         print(tabulate(table_data, headers=headers, tablefmt="grid"))
 
     def view_staff_appointments(self):
-        """View appointments for a specific staff member"""
+        #View appointments for a specific staff member
         staff_id = input("\nEnter staff ID: ").strip()
         
         try:
@@ -548,7 +548,7 @@ class HospitalCLI:
         print(tabulate(table_data, headers=headers, tablefmt="grid"))
 
     def update_appointment(self):
-        """Update appointment information"""
+        #Update appointment information
         appointment_id = input("\nEnter appointment ID to update: ").strip()
         
         try:
@@ -589,7 +589,7 @@ class HospitalCLI:
             print("No changes made.")
 
     def delete_appointment(self):
-        """Delete an appointment"""
+        #Delete an appointment
         appointment_id = input("\nEnter appointment ID to delete: ").strip()
         
         try:
@@ -615,7 +615,7 @@ class HospitalCLI:
 
     # Medical record management methods
     def create_medical_record(self):
-        """Create a new medical record"""
+        #Create a new medical record
         print("\n--- Create New Medical Record ---")
         
         record_data = {
@@ -636,7 +636,7 @@ class HospitalCLI:
             print(f"\nError: {e}")
 
     def view_all_medical_records(self):
-        """View all medical records"""
+        #View all medical records
         records = MedicalRecordService.get_all_medical_records(self.db)
         
         if not records:
@@ -660,7 +660,7 @@ class HospitalCLI:
         print("\n" + tabulate(table_data, headers=headers, tablefmt="grid"))
 
     def view_patient_medical_records(self):
-        """View medical records for a specific patient"""
+        #View medical records for a specific patient
         patient_id = input("\nEnter patient ID: ").strip()
         
         try:
@@ -692,7 +692,7 @@ class HospitalCLI:
         print(tabulate(table_data, headers=headers, tablefmt="grid"))
 
     def update_medical_record(self):
-        """Update medical record information"""
+        #Update medical record information
         record_id = input("\nEnter medical record ID to update: ").strip()
         
         try:
@@ -734,7 +734,7 @@ class HospitalCLI:
             print("No changes made.")
 
     def delete_medical_record(self):
-        """Delete a medical record"""
+        #Delete a medical record
         record_id = input("\nEnter medical record ID to delete: ").strip()
         
         try:
@@ -760,7 +760,7 @@ class HospitalCLI:
 
     # Billing management methods
     def create_bill(self):
-        """Create a new bill"""
+        #Create a new bill
         print("\n--- Create New Bill ---")
         
         bill_data = {
@@ -778,7 +778,7 @@ class HospitalCLI:
             print(f"\nError: {e}")
 
     def view_all_bills(self):
-        """View all bills"""
+        #View all bills
         bills = BillingService.get_all_bills(self.db)
         
         if not bills:
@@ -801,7 +801,7 @@ class HospitalCLI:
         print("\n" + tabulate(table_data, headers=headers, tablefmt="grid"))
 
     def view_patient_bills(self):
-        """View bills for a specific patient"""
+        #View bills for a specific patient
         patient_id = input("\nEnter patient ID: ").strip()
         
         try:
@@ -832,7 +832,7 @@ class HospitalCLI:
         print(tabulate(table_data, headers=headers, tablefmt="grid"))
 
     def view_unpaid_bills(self):
-        """View all unpaid bills"""
+        #View all unpaid bills
         bills = BillingService.get_unpaid_bills(self.db)
         
         if not bills:
@@ -855,7 +855,7 @@ class HospitalCLI:
         print(tabulate(table_data, headers=headers, tablefmt="grid"))
 
     def mark_bill_paid(self):
-        """Mark a bill as paid"""
+        #Mark a bill as paid
         bill_id = input("\nEnter bill ID to mark as paid: ").strip()
         
         try:
@@ -871,7 +871,7 @@ class HospitalCLI:
             print("Bill not found.")
 
     def update_bill(self):
-        """Update bill information"""
+        #Update bill information
         bill_id = input("\nEnter bill ID to update: ").strip()
         
         try:
@@ -911,7 +911,7 @@ class HospitalCLI:
             print("No changes made.")
 
     def delete_bill(self):
-        """Delete a bill"""
+        #Delete a bill
         bill_id = input("\nEnter bill ID to delete: ").strip()
         
         try:
@@ -936,12 +936,12 @@ class HospitalCLI:
             print("Deletion cancelled.")
 
     def exit_program(self):
-        """Exit the program"""
+        #Exit the program
         print("\nThank you for using Hospital Management System. Goodbye!")
         sys.exit(0)
 
 def main():
-    """Main function to run the CLI"""
+    # Main function to run the CLI
     cli = HospitalCLI()
     print("Welcome to Hospital Management System!")
     cli.main_menu()
