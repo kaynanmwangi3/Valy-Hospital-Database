@@ -18,7 +18,7 @@ class Patient(Base):
     address = Column(String(200))
     created_at = Column(DateTime, default=datetime.utcnow)
     
-    # Relationships
+    # Relationships between different tables 
     appointments = relationship("Appointment", back_populates="patient")
     medical_records = relationship("MedicalRecord", back_populates="patient")
     bills = relationship("Bill", back_populates="patient")
@@ -38,7 +38,7 @@ class Staff(Base):
     email = Column(String(100))
     hire_date = Column(Date, default=datetime.utcnow)
     
-    # Relationships
+    # Relationships between different tables 
     appointments = relationship("Appointment", back_populates="staff")
     medical_records = relationship("MedicalRecord", back_populates="staff")
     
@@ -55,7 +55,7 @@ class Appointment(Base):
     purpose = Column(String(200))
     status = Column(String(20), default="Scheduled")  # Scheduled, Completed, Cancelled
     
-    # Relationships
+    # Relationships between different tables 
     patient = relationship("Patient", back_populates="appointments")
     staff = relationship("Staff", back_populates="appointments")
     
@@ -72,12 +72,12 @@ class MedicalRecord(Base):
     treatment = Column(String(500))
     admission_date = Column(Date)
     discharge_date = Column(Date)
-    duration_of_stay = Column(Integer)  # in days
+    duration_of_stay = Column(Integer)  
     medications = Column(String(500))
     notes = Column(String(1000))
     created_at = Column(DateTime, default=datetime.utcnow)
     
-    # Relationships
+    # Relationships between different tables 
     patient = relationship("Patient", back_populates="medical_records")
     staff = relationship("Staff", back_populates="medical_records")
     
@@ -92,10 +92,10 @@ class Bill(Base):
     amount = Column(Float, nullable=False)
     date_issued = Column(Date, default=datetime.utcnow)
     due_date = Column(Date)
-    status = Column(String(20), default="Unpaid")  # Paid, Unpaid
+    status = Column(String(20), default="Unpaid")  
     description = Column(String(500))
     
-    # Relationships
+    # Relationships between different tables 
     patient = relationship("Patient", back_populates="bills")
     
     def __repr__(self):
