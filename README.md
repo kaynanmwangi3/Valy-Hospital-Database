@@ -95,7 +95,7 @@ If you encounter any issues or have questions about the Hospital Database Manage
 
 - **Email**: caeserkaynan@gmail.com
 - **GitHub**: kaynanmwangi3
-- **Project Repository**: https://github.com/kaynanmwangi/hospital-management-system
+- **Project Repository**: https://github.com/kaynanmwangi3/hospital-management-system
 - **Documentation**: Full documentation available in the `/docs` directory
 
 For bug reports or feature requests, please open an issue on the GitHub repository with detailed information about the problem or suggestion.
