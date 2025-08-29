@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
-"""
-Main entry point for the Hospital Management System
-"""
+
+# Main entry point for the Hospital Management System
+
 import sys
 import os
 
 # Add the current directory to Python path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
+#import cli interface code
 from app.cli import HospitalCLI
 
 def main():
-    """Main function to run the CLI"""
+    #function that runs the cli code
     cli = HospitalCLI()
     print("Welcome to Hospital Management System!")
     cli.main_menu()
