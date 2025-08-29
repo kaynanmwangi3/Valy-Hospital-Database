@@ -38,7 +38,7 @@ The Hospital Database Management System is a robust, command-line interface appl
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/kaynanmwangi/hospital-management-system.git
+   git clone https://github.com/kaynanmwangi/Valy-Hospital-Database.git
    cd hospital-management-system
    ```
 
